@@ -1,0 +1,6 @@
+module Pods_ChallengeDay_UnitsConverter {
+  umbrella header "Pods-ChallengeDay.UnitsConverter-umbrella.h"
+
+  export *
+  module * { export * }
+}
