@@ -11,11 +11,11 @@ struct ContentView: View {
         let peopleCount = Double(numberOfPeople) ?? 1
         let tipSelection = Double(tipPercentages[tipPercentage])
         let orderAmount = Double(checkAmount) ?? 0
-            
+        
         let tipValue = orderAmount / 100 * tipSelection
         let grandTotal = orderAmount + tipValue
         let amountPerPerson = grandTotal / peopleCount
-            
+        
         return amountPerPerson
     }
     
@@ -50,7 +50,12 @@ struct ContentView: View {
                 }
                 
                 Section(header: Text("Total amount")) {
-                    Text("$\(grandTotal, specifier: "%.2f")")
+                    if tipPercentages[tipPercentage] == 0 {
+                        Text("$\(grandTotal, specifier: "%.2f")")
+                            .redTextModifier()
+                    } else {
+                        Text("$\(grandTotal, specifier: "%.2f")")
+                    }
                 }
                 
                 Section(header: Text("Amount per person")) {
@@ -69,5 +74,18 @@ struct ContentView: View {
         static var previews: some View {
             ContentView()
         }
+    }
+}
+
+struct RedTextModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .foregroundColor(.red)
+    }
+}
+
+extension View {
+    func redTextModifier() -> some View {
+        self.modifier(RedTextModifier())
     }
 }
