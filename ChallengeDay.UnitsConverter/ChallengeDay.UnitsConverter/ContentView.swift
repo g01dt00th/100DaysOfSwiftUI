@@ -52,7 +52,7 @@ struct ContentView: View {
                     Text("\(celsiusAmount, specifier: "%.2f") Cº")
                 }
                 
-                Section(header: Text("Start unit")) {
+                Section(header: Text("Unit")) {
                     Picker("", selection: $value) {
                         ForEach(0 ..< unitsOfTemperature.count) {
                             Text("\(self.unitsOfTemperature[$0])")
