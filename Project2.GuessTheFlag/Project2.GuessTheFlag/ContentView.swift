@@ -9,9 +9,13 @@ struct ContentView: View {
     @State private var scoreTitle = ""
     @State private var currentScore = 0
     
+    @State private var rotate = 0.0
+    @State private var selection: Int? = nil
+    @State private var opacity = 1.0
+    
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: [.blue, .pink]), startPoint: .top, endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 30) {
@@ -28,17 +32,30 @@ struct ContentView: View {
                 ForEach(0 ..< 3) { number in
                     Button(action: {
                         self.flagTapped(number)
+                        if number == self.correctAnswer {
+                            self.selection = number
+                            withAnimation(.interpolatingSpring(stiffness: 20, damping: 5)) {
+                                self.rotate += 360
+                            }
+                        } else {
+                            withAnimation(.interpolatingSpring(stiffness: 20, damping: 10)) {
+                                self.opacity = 0.2
+                            }
+                        }
                     }) {
-                        FlagImage(image: self.countries[number])
+                        withAnimation(.interpolatingSpring(stiffness: 10, damping: 5)) {
+                            FlagImage(image: self.countries[number])
+                        }
+                        
                     }
+                    .opacity(number == self.correctAnswer ? 1.0 : self.opacity)
+                    .rotation3DEffect(.degrees(self.selection == number ? self.rotate : 0.0), axis: (x: 0, y: 1, z: 0))
                 }
                 
                 Text("Your current score is \(currentScore)")
                     .foregroundColor(.white)
                     .font(.title)
                     .fontWeight(.black)
-                
-                Spacer()
             }
         }
         .alert(isPresented: $showingScore) {
@@ -57,25 +74,27 @@ struct ContentView: View {
             currentScore -= 10
         }
         
+        self.opacity = 1.0
         showingScore = true
     }
     
     func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0 ... 2)
+        self.opacity = 1.0
     }
 }
 
 struct FlagImage: View {
     var image: String
+    var rotate = 0.0
     
     var body: some View {
         Image(image)
             .renderingMode(.original)
             .clipShape(Capsule())
             .overlay(Capsule()
-                .stroke(Color.black, lineWidth: 1))
-            .shadow(color: .black, radius: 2)
+                .stroke(Color.white, lineWidth: 3))
     }
 }
 
