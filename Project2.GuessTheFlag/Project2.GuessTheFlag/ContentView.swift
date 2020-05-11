@@ -13,9 +13,13 @@ struct ContentView: View {
     @State private var selection: Int? = nil
     @State private var opacity = 1.0
     
+    @State var gradient = [Color.blue, Color.pink, Color.purple, Color.yellow]
+    @State var startPoint = UnitPoint(x: 0, y: 0)
+    @State var endPoint = UnitPoint(x: 0, y: 2)
+    
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [.blue, .pink]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: self.gradient), startPoint: self.startPoint, endPoint: self.endPoint)
                 .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 30) {
@@ -33,13 +37,19 @@ struct ContentView: View {
                     Button(action: {
                         self.flagTapped(number)
                         if number == self.correctAnswer {
+                            withAnimation(.easeInOut(duration: 3.0)) {
+                                self.startPoint = UnitPoint(x: 0, y: 0)
+                                self.endPoint = UnitPoint(x: 0, y: 2)
+                            }
                             self.selection = number
                             withAnimation(.interpolatingSpring(stiffness: 20, damping: 5)) {
                                 self.rotate += 360
                             }
                         } else {
-                            withAnimation(.interpolatingSpring(stiffness: 20, damping: 10)) {
+                            withAnimation(.easeInOut(duration: 3.0)) {
                                 self.opacity = 0.2
+                                self.startPoint = UnitPoint(x: 1, y: -1)
+                                self.endPoint = UnitPoint(x: 0, y: 1)
                             }
                         }
                     }) {
