@@ -47,9 +47,9 @@ struct ContentView: View {
                             }
                         } else {
                             withAnimation(.easeInOut(duration: 3.0)) {
-                                self.opacity = 0.2
                                 self.startPoint = UnitPoint(x: 1, y: -1)
                                 self.endPoint = UnitPoint(x: 0, y: 1)
+                                self.opacity = 0.2
                             }
                         }
                     }) {
