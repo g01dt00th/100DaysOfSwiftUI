@@ -6,6 +6,7 @@ struct AddView: View {
     @State private var name = ""
     @State private var type = "Personal"
     @State private var amount = ""
+    @State private var showingAlert = false
     static let types = ["Business", "Personal"]
     
     var body: some View {
@@ -20,16 +21,20 @@ struct AddView: View {
                 }
                 
                 TextField("Amount", text: $amount)
-                    .keyboardType(.numberPad)
             }
-        .navigationBarTitle("Add new expense")
+            .navigationBarTitle("Add new expense")
             .navigationBarItems(trailing: Button("Save") {
                 if let actualAmount = Int(self.amount) {
                     let item = ExpenseItem(name: self.name, type: self.type, amount: actualAmount)
                     self.expenses.items.append(item)
                     
                     self.presentationMode.wrappedValue.dismiss()
+                } else {
+                    self.showingAlert = true
                 }
+            }
+            .alert(isPresented: $showingAlert) {
+                Alert(title: Text("Not an Int"), message: Text("Money is a good servant but a bad master."), dismissButton: .cancel())
                 }
             )
         }
