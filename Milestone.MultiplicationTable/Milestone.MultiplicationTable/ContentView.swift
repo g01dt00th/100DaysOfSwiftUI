@@ -12,13 +12,18 @@ struct ContentView: View {
     
     let questions = [5, 10, 20, 80]
     
+    private let colors = [#colorLiteral(red: 0.3490196078, green: 0.7058823529, blue: 0.5647058824, alpha: 1), #colorLiteral(red: 0.3411764706, green: 0.5882352941, blue: 0.8078431373, alpha: 1), #colorLiteral(red: 0.8392156863, green: 0.3411764706, blue: 0.2745098039, alpha: 1), #colorLiteral(red: 0.9411764706, green: 0.7215686275, blue: 0.262745098, alpha: 1)]
+    
     private var expression: Int {
         firstMultiplier * secondMultipler
     }
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Round: \(round)")
+            Text("round: \(round)")
+                    .background(Rectangle()
+                        .fill(Color(self.colors.last ?? .green))
+                )
             
             Picker("", selection: $selection) {
                 ForEach(0 ..< questions.count) {
@@ -27,67 +32,26 @@ struct ContentView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             
-            Stepper("Up to...", value: $firstMultiplier, in: 1 ... 12)
+            Stepper("up to...", value: $firstMultiplier, in: 1 ... 12)
+                .background(Rectangle()
+                    .fill(Color(self.colors[0]))
+            )
             Text("\(firstMultiplier) * \(secondMultipler)")
+                .background(Rectangle()
+                    .fill(Color(self.colors[1]))
+            )
             
-            TextField("Answer", text: $answer)
-                .keyboardType(.numberPad)
+            Text("Answer: \(answer)   ")
+                .background(Rectangle()
+                    .fill(Color(self.colors[2]))
+                )
             
-            HStack(alignment: .center, spacing: 20) {
-                ForEach(1 ..< 5) { num in
-                    Button(action: {
-                        self.answer += String(num)
-                    }) {
-                        Text("\(num)")
-                    }
-                }
-            }
-            
-            HStack(alignment: .center, spacing: 20) {
-                ForEach(5 ..< 9) { num in
-                    Button(action: {
-                        self.answer += String(num)
-                    }) {
-                        Text("\(num)")
-                    }
-                }
-            }
-            
-            HStack(alignment: .center, spacing: 20) {
-                Button("del") {
-                    self.answer.removeLast()
-                }
-                
-                Button(action: {
-                    self.answer += "9"
-                }) {
-                    Text("9")
-                }
-                
-                Button(action: {
-                    self.answer += "0"
-                }) {
-                    Text("0")
-                }
-                
-                Button("sub") {
-                    if self.round < self.questions[self.selection] {
-                        if self.expression == Int(self.answer) {
-                            self.secondMultipler = Int.random(in: 1 ... 12)
-                            self.answer = ""
-                            self.round += 1
-                        } else {
-                            self.showingAlert = true
-                        }
-                    } else {
-                        self.showingAlert.toggle()
-                    }
-                }
-            }
             Spacer()
             
+            MyKeyboard()
         }
-        .padding()
+        .animation(.easeOut)
+        .modifier(ButtonsTextStyle())
         .alert(isPresented: $showingAlert) {
             Alert(title: Text("A"), message: Text("B"), dismissButton: .cancel(Text("Cancel"), action: {
                 self.round = 0
@@ -95,6 +59,7 @@ struct ContentView: View {
                 self.firstMultiplier += 1
             }))
         }
+        .padding()
     }
 }
 
