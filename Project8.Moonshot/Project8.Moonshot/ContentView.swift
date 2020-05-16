@@ -1,46 +1,26 @@
 import SwiftUI
 
-struct CustomText: View {
-    var text: String
-    
-    var body: some View {
-        Text(text)
-    }
-    
-    init(_ text: String) {
-        print("Creating a CustomText")
-        self.text = text
-    }
-}
-
 struct ContentView: View {
+    let astronauts: [Astronaut] = Bundle.main.decode("astronauts.json")
+    let missions: [Mission] = Bundle.main.decode("missions.json")
+    
     var body: some View {
         NavigationView {
-            ScrollView(.vertical) {
-                VStack(spacing: 10) {
-                    Image("aldrin")
+            List(missions) { mission in
+                NavigationLink(destination: Text("Detail View")) {
+                    Image(mission.image)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 44, height: 44)
                     
-                    GeometryReader { geo in
-                        Image("aldrin")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: geo.size.width)
-                    }
-                    
-                    VStack {
-                        ForEach(0 ..< 100) {
-                            CustomText("Item \($0)")
-                                .font(.title)
-                        }
-                    }
-                    
-                    NavigationLink(destination: Text("Detail View")) {
-                        Text("Hello, World!")
+                    VStack(alignment: .leading) {
+                        Text(mission.displayName)
+                            .font(.headline)
+                        Text(mission.formattedLaunchDate)
                     }
                 }
-                .frame(maxWidth: .infinity)
-                .navigationBarTitle("SwiftUI")
             }
+            .navigationBarTitle("Moonshot")
         }
     }
 }
