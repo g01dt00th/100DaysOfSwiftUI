@@ -41,7 +41,7 @@ struct ContentView: View {
                     .fill(Color(self.colors[1]))
             )
             
-            Text("Answer: \(answer)   ")
+            Text("answer: \(answer)   ")
                 .background(Rectangle()
                     .fill(Color(self.colors[2]))
                 )
