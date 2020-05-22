@@ -88,6 +88,35 @@ struct ColorCyclingCircle: View {
     }
 }
 
+struct ColorCyclingRectangle: View {
+    var amount = 0.0
+    var steps = 100
+    
+    var body: some View {
+        ZStack {
+            ForEach(0 ..< steps) { value in
+                Rectangle()
+                    .inset(by: CGFloat(value))
+                    .strokeBorder(LinearGradient(gradient: Gradient(colors: [
+                        self.color(for: value, brightness: 1),
+                        self.color(for: value, brightness: 0.5)
+                    ]), startPoint: .top, endPoint: .bottom), lineWidth: 2)
+            }
+        }
+        .drawingGroup()
+    }
+    
+    func color(for value: Int, brightness: Double) -> Color {
+        var targetHue = Double(value) / Double(self.steps) + self.amount
+        
+        if targetHue > 1 {
+            targetHue -= 1
+        }
+        
+        return Color(hue: targetHue, saturation: 1, brightness: brightness)
+    }
+}
+
 struct Trapezoid: Shape {
     var insetAmount: CGFloat
     
@@ -193,6 +222,23 @@ struct Spirograph: Shape {
     }
 }
 
+struct Arrow: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        
+        path.move(to: CGPoint(x: rect.midX / 2, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.midX + rect.midX / 2, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.midX + rect.midX / 2, y: rect.midY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
+        path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.midY))
+        path.addLine(to: CGPoint(x: rect.midX - rect.midX / 2, y: rect.midY))
+        path.addLine(to: CGPoint(x: rect.midX / 2, y: rect.maxY))
+        
+        return path
+    }
+}
+
 struct ContentView: View {
     // Checkerboard
     @State private var insetAmount: CGFloat = 50
@@ -207,12 +253,18 @@ struct ContentView: View {
     // ColorCycling
     @State private var colorCycle = 0.0
     
+    // ColorRectangling
+    @State private var colorRect = 0.0
+    
     // Spinograph
     @State private var innerRadius = 125.0
     @State private var outerRadius = 75.0
     @State private var distance = 25.0
     @State private var amount: CGFloat = 1.0
     @State private var hue = 0.6
+    
+    // Arrow
+    @State private var lineWidth: CGFloat = 10
     
     var body: some View {
         ScrollView(.vertical) {
@@ -291,6 +343,22 @@ struct ContentView: View {
                     Slider(value: $hue)
                         .padding(.horizontal)
                 }
+                
+                withAnimation() {
+                    Arrow()
+                    .stroke(Color.red, style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round))
+                    .frame(width: 100, height: 100)
+                    .padding()
+                }
+                
+                Slider(value: $lineWidth, in: 1 ... 20)
+                    .padding(.horizontal)
+                
+                ColorCyclingRectangle(amount: colorRect)
+                    .frame(width: 100, height: 100)
+                
+                Slider(value: $colorRect)
+                    .padding(.horizontal)
             }
             .padding()
         }
