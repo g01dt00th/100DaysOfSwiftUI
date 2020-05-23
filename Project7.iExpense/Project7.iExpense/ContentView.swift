@@ -44,6 +44,7 @@ struct ContentView: View {
                         VStack(alignment: .leading) {
                             Text(item.name)
                                 .font(.headline)
+                            
                             Text(item.type)
                         }
                         
