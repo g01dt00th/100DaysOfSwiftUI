@@ -1,41 +1,41 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var order = Order()
+    @ObservedObject var user = Order(order: OrderData())
     
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    Picker("Select your cake type", selection: $order.type) {
-                        ForEach(0 ..< Order.types.count, id: \.self) {
-                            Text(Order.types[$0])
+                    Picker("Select your cake type", selection: $user.order.type) {
+                        ForEach(0 ..< user.order.types.count, id: \.self) {
+                            Text(self.user.order.types[$0])
                         }
                     }
                     
-                    Stepper(value: $order.quantity, in: 3 ... 20) {
-                        Text("Number of cakes: \(order.quantity)")
+                    Stepper(value: $user.order.quantity, in: 3 ... 20) {
+                        Text("Number of cakes: \(self.user.order.quantity)")
                     }
                 }
                 
                 Section {
-                    Toggle(isOn: $order.specialRequestEnabled.animation()) {
+                    Toggle(isOn: $user.order.specialRequestEnabled.animation()) {
                         Text("Any special requests?")
                     }
                     
-                    if order.specialRequestEnabled {
-                        Toggle(isOn: $order.extraFrosting) {
+                    if user.order.specialRequestEnabled {
+                        Toggle(isOn: $user.order.extraFrosting) {
                             Text("Add extra frosting?")
                         }
                         
-                        Toggle(isOn: $order.addSprinkles) {
+                        Toggle(isOn: $user.order.addSprinkles) {
                             Text("Add extra sprinkles")
                         }
                     }
                 }
                 
                 Section {
-                    NavigationLink(destination: AddressView(order: order)) {
+                    NavigationLink(destination: AddressView(user: user)) {
                         Text("Delivery details")
                     }
                 }
