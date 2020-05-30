@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CustomKeyboardView: View {
-    @ObservedObject var pad: NumPad
+    @ObservedObject var device: NumPad
     @State var numStr = ""
     
     var body: some View {
@@ -9,7 +9,7 @@ struct CustomKeyboardView: View {
             ForEach(0 ..< 3) { row in
                 HStack(spacing: 20) {
                     ForEach(0 ..< 4) { item in
-                        RandomShapesView(numStr: self.$pad.numPad.arrayOfNum[row][item])
+                        RandomShapesView(numStr: self.$device.numPad.arrayOfNum[row][item])
                     }
                 }
             }
@@ -19,7 +19,7 @@ struct CustomKeyboardView: View {
 
 struct CustomKeyboardView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomKeyboardView(pad: NumPad(num: NumPadData()))
+        CustomKeyboardView(device: NumPad(num: NumPadData()))
     }
 }
 

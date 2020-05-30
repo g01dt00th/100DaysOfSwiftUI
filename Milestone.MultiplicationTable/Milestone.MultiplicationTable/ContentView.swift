@@ -10,7 +10,9 @@ struct ContentView: View {
                 
                 Image("zebra")
                 
-                CustomKeyboardView(pad: NumPad(num: NumPadData()))
+                Image("zebra")
+                
+                CustomKeyboardView(device: NumPad(num: NumPadData()))
                     .padding()
             }
             .animation(.easeOut)
