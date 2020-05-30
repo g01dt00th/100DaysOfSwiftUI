@@ -2,17 +2,14 @@ import SwiftUI
 
 struct CustomKeyboardView: View {
     @ObservedObject var pad: NumPad
+    @State var numStr = ""
     
     var body: some View {
         VStack(spacing: 20) {
             ForEach(0 ..< 3) { row in
                 HStack(spacing: 20) {
                     ForEach(0 ..< 4) { item in
-                        ZStack {
-                            RandomShapeView(num: NumPad(num: NumPadData()))
-                            
-                            Text(self.pad.numPad.arrayOfNum[row][item])
-                        }
+                        RandomShapesView(numStr: self.$pad.numPad.arrayOfNum[row][item])
                     }
                 }
             }

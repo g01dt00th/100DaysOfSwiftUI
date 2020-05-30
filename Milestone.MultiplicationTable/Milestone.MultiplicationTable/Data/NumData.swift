@@ -5,7 +5,7 @@ enum NumPadEnum: CodingKey {
 }
 
 struct NumPadData: Codable {
-    let arrayOfNum = [
+    var arrayOfNum = [
         ["1", "2", "3", "4"],
         ["5", "6", "7", "8"],
         ["del", "9", "0", "sub"]
