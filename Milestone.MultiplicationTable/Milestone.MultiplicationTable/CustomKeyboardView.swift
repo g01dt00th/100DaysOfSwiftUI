@@ -11,7 +11,13 @@ struct CustomKeyboardView: View {
                     ForEach(0 ..< 4) { item in
                         RandomShapesView(numStr: self.$device.numPad.arrayOfNum[row][item])
                     }
+                    .onMove { source, destination in
+                        self.device.numPad.arrayOfNum.move(fromOffsets: source, toOffset: destination)
+                    }
                 }
+            }
+            .onMove { source, destination in
+                self.device.numPad.arrayOfNum.move(fromOffsets: source, toOffset: destination)
             }
         }
     }

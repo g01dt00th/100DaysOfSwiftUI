@@ -25,9 +25,11 @@ struct RandomShapesView: View {
             }
         }
         .offset(self.dragAmount)
+        .zIndex(dragAmount == .zero ? 0 : 1)
         .gesture(DragGesture(coordinateSpace: .global)
         .onChanged {
             self.dragAmount = CGSize(width: $0.translation.width / 2, height: $0.translation.height / 2)
+            
         }
         .onEnded { _ in 
             self.dragAmount = .zero

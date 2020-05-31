@@ -2,15 +2,25 @@ import SwiftUI
 
 struct ContentView: View {
     @State var dragAmount = CGSize.zero
+    @State var arrayOfAnimals = ["whale", "walrus"]
     
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
                 Spacer()
                 
-                Image("zebra")
+                HStack {
+                    ForEach(arrayOfAnimals, id: \.self) {
+                        Image("\($0)")
+                    }
+                }
                 
-                Image("zebra")
+                HStack {
+                    ForEach(arrayOfAnimals, id: \.self) {
+                        Image("\($0)")
+                    }
+                }
+                
                 
                 CustomKeyboardView(device: NumPad(num: NumPadData()))
                     .padding()
