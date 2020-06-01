@@ -8,6 +8,14 @@ struct DetailView: View {
     
     let book: Book
     
+    var formatterDate: String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .short
+        let newDate = formatter.string(from: book.date ?? Date())
+        return newDate
+    }
+    
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -34,6 +42,9 @@ struct DetailView: View {
                 
                 RatingView(rating: .constant(Int(self.book.rating)))
                     .font(.largeTitle)
+                
+                Text(self.formatterDate)
+                    .padding()
                 
                 Spacer()
             }

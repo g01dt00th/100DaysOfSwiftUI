@@ -9,6 +9,15 @@ struct AddBookView: View {
     @State private var rating = 3
     @State private var genre = ""
     @State private var review = ""
+    @State private var date = Date()
+    
+    var formatterDate: String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.dateStyle = .short
+        let newDate = formatter.string(from: self.date)
+        return newDate
+    }
     
     let genres = [
         "Fantasy", "Horror", "Kids",
@@ -35,17 +44,36 @@ struct AddBookView: View {
                     RatingView(rating: $rating)
                     
                     TextField("Write a review", text: $review)
+                    
+                    Text(formatterDate)
                 }
                 
                 Section {
                     Button("Save") {
                         let newBook = Book(context: self.moc)
                         
+                        if self.title.isEmpty {
+                            self.title = "Default title"
+                        }
+                        
+                        if self.author.isEmpty {
+                            self.author = "Default author"
+                        }
+                        
+                        if self.genre.isEmpty {
+                            self.genre = "Fantasy"
+                        }
+                        
+                        if self.review.isEmpty {
+                            self.review = "Default review"
+                        }
+                        
                         newBook.title = self.title
                         newBook.author = self.author
                         newBook.rating = Int16(self.rating)
                         newBook.genre = self.genre
                         newBook.review = self.review
+                        newBook.date = self.date
                         
                         try? self.moc.save()
                         self.presentationMode.wrappedValue.dismiss()
