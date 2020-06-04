@@ -4,9 +4,11 @@ struct DFView: View {
     @Environment(\.managedObjectContext) var moc
     @State var lastNameFilter = "A"
     
+    private var sort = [NSSortDescriptor(key: "lastName", ascending: true)]
+    
     var body: some View {
         VStack {
-            FilteredList(filterKey: "lastName", filterValue: lastNameFilter) { (singer: Singer) in
+            FilteredList(predicate: .beginsWith, filterKey: "lastName", filterValue: lastNameFilter, sortDescriptors: sort) { (singer: Singer) in
                 Text("\(singer.wrappedFirstName) \(singer.wrappedLastName)")
             }
             
