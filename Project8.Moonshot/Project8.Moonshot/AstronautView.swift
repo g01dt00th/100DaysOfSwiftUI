@@ -39,6 +39,7 @@ struct AstronautView: View {
                 matches.append(mission)
             }
         }
+        
         self.missions = matches
     }
 }
