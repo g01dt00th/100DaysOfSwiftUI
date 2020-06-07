@@ -3,11 +3,11 @@ import CoreData
 
 
 extension CoreUser {
-
+    
     @nonobjc public class func fetchRequest() -> NSFetchRequest<CoreUser> {
         return NSFetchRequest<CoreUser>(entityName: "CoreUser")
     }
-
+    
     @NSManaged public var id: String?
     @NSManaged public var isActive: Bool
     @NSManaged public var name: String?
