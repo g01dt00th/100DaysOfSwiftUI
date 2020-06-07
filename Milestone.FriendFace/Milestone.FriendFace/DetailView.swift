@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct DetailView: View {
-    var users: [User]
+    let users: [User]
     let currentUser: User
     
     var body: some View {
@@ -21,6 +21,16 @@ struct DetailView: View {
                 .font(.headline)
             
             Text(currentUser.formatterDate)
+            
+            ScrollView(.horizontal) {
+                HStack(spacing: 10) {
+                    ForEach(0 ..< self.currentUser.tags.count) { tag in
+                        Text(self.currentUser.tags[tag])
+                            .foregroundColor(Color(red: 240 / 255, green: 184 / 255, blue: 67 / 255))
+                    }
+                }
+                .padding()
+            }
             
             Form {
                 Section(header: Text("Contacts")) {
@@ -59,7 +69,7 @@ struct DetailView: View {
                                             Text(user.name)
                                                 .font(.headline)
                                             
-                                            Text(user.id)
+                                            Text(user.company)
                                                 .font(.subheadline)
                                         }
                                     }

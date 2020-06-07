@@ -1,9 +1,5 @@
 import Foundation
 
-struct Response: Codable {
-    var users: [User]
-}
-
 struct User: Codable, Identifiable {
     let id: String
     let isActive: Bool
