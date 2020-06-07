@@ -41,7 +41,7 @@ struct User: Codable, Identifiable {
     }
 }
 
-struct Friend: Codable, Hashable {
+struct Friend: Codable, Hashable, Identifiable {
     let id, name: String
     
     var initials: String {

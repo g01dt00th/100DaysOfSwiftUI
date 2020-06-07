@@ -25,7 +25,7 @@ struct ContentView: View {
                             .font(.subheadline)
                     }
                     
-                    NavigationLink("", destination: DetailView(currentUser: item))
+                    NavigationLink("", destination: DetailView(users: self.users, currentUser: item))
                 }
             }
             .onAppear(perform: fetchData)
