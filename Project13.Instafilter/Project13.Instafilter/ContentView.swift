@@ -10,6 +10,8 @@ struct ContentView: View {
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
     @State private var processedImage: UIImage?
+    @State private var select = "Tap to select a picture"
+    @State private var instafilter = "Instafilter"
     
     @State var currentFilter: CIFilter = CIFilter.sepiaTone()
     let context = CIContext()
@@ -36,7 +38,7 @@ struct ContentView: View {
                             .resizable()
                             .scaledToFit()
                     } else {
-                        Text("Tap to select a picture")
+                        Text(select)
                             .foregroundColor(.white)
                             .font(.headline)
                     }
@@ -53,14 +55,17 @@ struct ContentView: View {
                 .padding(.vertical)
                 
                 HStack {
-                    Button("Change Filter") {
+                    Button("\(currentFilter.formattedName)") {
                         self.showingFilterSheet = true
                     }
                     
                     Spacer()
                     
                     Button("Save") {
-                        guard let processedImage = self.processedImage else { return }
+                        guard let processedImage = self.processedImage else {
+                            self.select = "Add image, dude"
+                            return
+                        }
                         
                         let imageSaver = ImageS()
                         
@@ -77,7 +82,7 @@ struct ContentView: View {
                 }
             }
             .padding([.horizontal, .bottom])
-            .navigationBarTitle("Instafilter")
+            .navigationBarTitle(instafilter)
             .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
                 ImagePicker(image: self.$inputImage)
             }
@@ -130,6 +135,21 @@ struct ContentView: View {
     func setFilter(_ filter: CIFilter) {
         currentFilter = filter
         loadImage()
+    }
+}
+
+extension CIFilter {
+    var formattedName: String {
+        let removeCI = name.replacingOccurrences(of: "CI",
+                                                 with: "",
+                                                 range: name.range(of: name))
+        
+        let spaceOnUpperCase = removeCI.replacingOccurrences(of: "([A-Z])",
+                                                             with: " $1",
+                                                             options: .regularExpression,
+                                                             range: removeCI.range(of: removeCI))
+        
+        return spaceOnUpperCase.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }
 
