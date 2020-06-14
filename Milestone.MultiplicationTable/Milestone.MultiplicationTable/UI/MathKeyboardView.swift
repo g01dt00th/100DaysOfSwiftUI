@@ -3,7 +3,6 @@ import SwiftUI
 struct MathKeyboardView: View {
     @ObservedObject var device: NumPad
     @State var solution = ""
-    @State private var shape = Bool.random()
     
     var body: some View {
         VStack(spacing: 20) {

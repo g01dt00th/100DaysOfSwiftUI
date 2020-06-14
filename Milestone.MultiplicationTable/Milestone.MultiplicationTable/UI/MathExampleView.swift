@@ -3,7 +3,6 @@ import SwiftUI
 struct MathExampleView: View {
     private let multiplicand = Int.random(in: 1 ... 12)
     private let factor = "5"
-    @State private var shape = Bool.random()
     
     var body: some View {
         HStack {
