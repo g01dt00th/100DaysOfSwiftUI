@@ -1,4 +1,4 @@
-# Project 2: Guess the Flag
+# Project 2: Guess the Flag +
 https://www.hackingwithswift.com/100/swiftui/20
 
 Includes solutions to the [challenges](https://www.hackingwithswift.com/books/ios-swiftui/guess-the-flag-wrap-up).
@@ -6,6 +6,10 @@ Includes solutions to the [challenges](https://www.hackingwithswift.com/books/io
 ## Topics
 
 VStack, Image, Alert
+
+## Extra
+
+Background animations
 
 ## Challenges
 
