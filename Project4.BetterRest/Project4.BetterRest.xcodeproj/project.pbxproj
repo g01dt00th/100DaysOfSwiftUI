@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7A1F9449245F522B00143402 /* SleepCalculator.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7A1F9448245F522B00143402 /* SleepCalculator.mlmodel */; };
+		7A2ADF6A24966B5400BE3AB8 /* BetterRest.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A2ADF6924966B5400BE3AB8 /* BetterRest.png */; };
 		7A9C483D245E068E00B9132C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C483C245E068E00B9132C /* AppDelegate.swift */; };
 		7A9C483F245E068E00B9132C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C483E245E068E00B9132C /* SceneDelegate.swift */; };
 		7A9C4841245E068E00B9132C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9C4840245E068E00B9132C /* ContentView.swift */; };
@@ -18,6 +19,8 @@
 
 /* Begin PBXFileReference section */
 		7A1F9448245F522B00143402 /* SleepCalculator.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SleepCalculator.mlmodel; sourceTree = SOURCE_ROOT; };
+		7A2ADF6724966B0300BE3AB8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7A2ADF6924966B5400BE3AB8 /* BetterRest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BetterRest.png; sourceTree = "<group>"; };
 		7A9C4839245E068E00B9132C /* Project4.BetterRest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project4.BetterRest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9C483C245E068E00B9132C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A9C483E245E068E00B9132C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +42,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A2ADF6824966B0900BE3AB8 /* screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				7A2ADF6924966B5400BE3AB8 /* BetterRest.png */,
+			);
+			path = screenshots;
+			sourceTree = "<group>";
+		};
 		7A9C4830245E068E00B9132C = {
 			isa = PBXGroup;
 			children = (
@@ -58,9 +69,11 @@
 		7A9C483B245E068E00B9132C /* Project4.BetterRest */ = {
 			isa = PBXGroup;
 			children = (
+				7A2ADF6824966B0900BE3AB8 /* screenshots */,
 				7A9C483C245E068E00B9132C /* AppDelegate.swift */,
 				7A9C483E245E068E00B9132C /* SceneDelegate.swift */,
 				7A9C4840245E068E00B9132C /* ContentView.swift */,
+				7A2ADF6724966B0300BE3AB8 /* README.md */,
 				7A9C4842245E069000B9132C /* Assets.xcassets */,
 				7A9C4847245E069000B9132C /* LaunchScreen.storyboard */,
 				7A9C484A245E069000B9132C /* Info.plist */,
@@ -136,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A9C4849245E069000B9132C /* LaunchScreen.storyboard in Resources */,
+				7A2ADF6A24966B5400BE3AB8 /* BetterRest.png in Resources */,
 				7A9C4846245E069000B9132C /* Preview Assets.xcassets in Resources */,
 				7A9C4843245E069000B9132C /* Assets.xcassets in Resources */,
 			);
