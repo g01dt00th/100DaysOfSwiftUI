@@ -12,7 +12,7 @@ struct User: Identifiable, Comparable {
 
 struct LoadingView: View {
     var body: some View {
-        Text("Loading!")
+        Text("Loading")
     }
 }
 

@@ -1,28 +1,18 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var dragAmount = CGSize.zero
-    @State var arrayOfAnimals = ["whale", "walrus"]
+    @ObservedObject var device: NumPad
     
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
                 Spacer()
                 
-                HStack {
-                    ForEach(arrayOfAnimals, id: \.self) {
-                        Image("\($0)")
-                    }
-                }
+                MathExampleView()
                 
-                HStack {
-                    ForEach(arrayOfAnimals, id: \.self) {
-                        Image("\($0)")
-                    }
-                }
+                Spacer()
                 
-                
-                CustomKeyboardView(device: NumPad(num: NumPadData()))
+                MathKeyboardView(device: NumPad(num: NumPadData()))
                     .padding()
             }
             .animation(.easeOut)
@@ -36,6 +26,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(device: NumPad(num: NumPadData()))
     }
 }
