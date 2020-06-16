@@ -27,7 +27,7 @@ struct MapView: UIViewRepresentable {
     
     class Coordinator: NSObject, MKMapViewDelegate {
         var parent: MapView
-        
+
         init(_ parent: MapView) {
             self.parent = parent
         }
@@ -38,25 +38,26 @@ struct MapView: UIViewRepresentable {
         
         func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
             guard let placemark = view.annotation as? MKPointAnnotation else { return }
+
             parent.selectedPlace = placemark
             parent.showingPlaceDetails = true
         }
-    }
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let identifier = "Placemark"
         
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-        
-        if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            annotationView?.canShowCallout = true
-            annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-        } else {
-            annotationView?.annotation = annotation
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            let identifier = "Placemark"
+
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+
+            if annotationView == nil {
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView?.canShowCallout = true
+                annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            } else {
+                annotationView?.annotation = annotation
+            }
+            
+            return annotationView
         }
-        
-        return annotationView
     }
 }
 
