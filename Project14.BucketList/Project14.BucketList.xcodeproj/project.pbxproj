@@ -18,6 +18,7 @@
 		7A4FBB0B249955D70035568A /* MKPointAnnotation-ObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4FBB0A249955D70035568A /* MKPointAnnotation-ObservableObject.swift */; };
 		7A4FBB0D249956D90035568A /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4FBB0C249956D90035568A /* EditView.swift */; };
 		7A4FBB0F2499599C0035568A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4FBB0E2499599C0035568A /* Result.swift */; };
+		7A650873249AA4C500C868C0 /* MKPointAnnotation-Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A650872249AA4C500C868C0 /* MKPointAnnotation-Codable.swift */; };
 		7AE1E9E72496AD5400AE610D /* MapKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE1E9E62496AD5400AE610D /* MapKitView.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		7A4FBB0A249955D70035568A /* MKPointAnnotation-ObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPointAnnotation-ObservableObject.swift"; sourceTree = "<group>"; };
 		7A4FBB0C249956D90035568A /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		7A4FBB0E2499599C0035568A /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		7A650872249AA4C500C868C0 /* MKPointAnnotation-Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPointAnnotation-Codable.swift"; sourceTree = "<group>"; };
 		7AE1E9E62496AD5400AE610D /* MapKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,6 +86,7 @@
 				7A4FBB0E2499599C0035568A /* Result.swift */,
 				7A4FBB0A249955D70035568A /* MKPointAnnotation-ObservableObject.swift */,
 				7A4FBB0C249956D90035568A /* EditView.swift */,
+				7A650872249AA4C500C868C0 /* MKPointAnnotation-Codable.swift */,
 				7A006C04249809F300D8BF12 /* MapView.swift */,
 				7A0DFC172495610300E6839E /* Assets.xcassets */,
 				7A0DFC1C2495610300E6839E /* LaunchScreen.storyboard */,
@@ -177,6 +180,7 @@
 				7A4FBB0D249956D90035568A /* EditView.swift in Sources */,
 				7A006C02249809B500D8BF12 /* ContentView.swift in Sources */,
 				7A0DFC122495610100E6839E /* AppDelegate.swift in Sources */,
+				7A650873249AA4C500C868C0 /* MKPointAnnotation-Codable.swift in Sources */,
 				7A4FBB0B249955D70035568A /* MKPointAnnotation-ObservableObject.swift in Sources */,
 				7A0DFC142495610100E6839E /* SceneDelegate.swift in Sources */,
 				7A0DFC162495610100E6839E /* AnyContentView.swift in Sources */,
