@@ -18,6 +18,7 @@
 		7A4FBB0B249955D70035568A /* MKPointAnnotation-ObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4FBB0A249955D70035568A /* MKPointAnnotation-ObservableObject.swift */; };
 		7A4FBB0D249956D90035568A /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4FBB0C249956D90035568A /* EditView.swift */; };
 		7A4FBB0F2499599C0035568A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4FBB0E2499599C0035568A /* Result.swift */; };
+		7A5CE891249BF58900BEEFE6 /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5CE890249BF58900BEEFE6 /* UnlockView.swift */; };
 		7A650873249AA4C500C868C0 /* MKPointAnnotation-Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A650872249AA4C500C868C0 /* MKPointAnnotation-Codable.swift */; };
 		7AE1E9E72496AD5400AE610D /* MapKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE1E9E62496AD5400AE610D /* MapKitView.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,7 @@
 		7A4FBB0A249955D70035568A /* MKPointAnnotation-ObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPointAnnotation-ObservableObject.swift"; sourceTree = "<group>"; };
 		7A4FBB0C249956D90035568A /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		7A4FBB0E2499599C0035568A /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		7A5CE890249BF58900BEEFE6 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
 		7A650872249AA4C500C868C0 /* MKPointAnnotation-Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPointAnnotation-Codable.swift"; sourceTree = "<group>"; };
 		7AE1E9E62496AD5400AE610D /* MapKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +85,7 @@
 				7A0DFC112495610100E6839E /* AppDelegate.swift */,
 				7A0DFC132495610100E6839E /* SceneDelegate.swift */,
 				7A006C01249809B500D8BF12 /* ContentView.swift */,
+				7A5CE890249BF58900BEEFE6 /* UnlockView.swift */,
 				7A4FBB0E2499599C0035568A /* Result.swift */,
 				7A4FBB0A249955D70035568A /* MKPointAnnotation-ObservableObject.swift */,
 				7A4FBB0C249956D90035568A /* EditView.swift */,
@@ -184,6 +187,7 @@
 				7A4FBB0B249955D70035568A /* MKPointAnnotation-ObservableObject.swift in Sources */,
 				7A0DFC142495610100E6839E /* SceneDelegate.swift in Sources */,
 				7A0DFC162495610100E6839E /* AnyContentView.swift in Sources */,
+				7A5CE891249BF58900BEEFE6 /* UnlockView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
