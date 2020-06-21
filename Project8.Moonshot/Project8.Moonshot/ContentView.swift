@@ -18,8 +18,12 @@ struct ContentView: View {
                     VStack(alignment: .leading) {
                         Text(mission.displayName)
                             .font(.headline)
+                            .accessibility(label: Text(""))
+                            .accessibility(value: Text(mission.displayName))
                         
                         Text(self.showNames ?  mission.formattedTeammates : mission.formattedLaunchDate)
+                            .accessibility(label: Text(""))
+                            .accessibility(value: Text(mission.formattedLaunchDate))
                     }
                 }
             }
