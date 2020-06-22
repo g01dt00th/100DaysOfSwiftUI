@@ -63,8 +63,7 @@ struct ResponseView: View {
             }
             
             print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
-        }
-        .resume()
+        }.resume()
     }
 }
 
