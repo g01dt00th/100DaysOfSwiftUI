@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MathExampleView: View {
-    @ObservedObject var device: NumPad
+    @EnvironmentObject var device: NumPad
     
     var body: some View {
         HStack {
@@ -45,7 +45,9 @@ struct MathExampleView: View {
 }
 
 struct MathExampleView_Previews: PreviewProvider {
+    static let device = NumPad()
+    
     static var previews: some View {
-        MathExampleView(device: NumPad(num: NumPadData()))
+        MathExampleView().environmentObject(device)
     }
 }

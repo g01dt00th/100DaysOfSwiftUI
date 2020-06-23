@@ -1,17 +1,17 @@
 import SwiftUI
 
 struct MathKeyboardView: View {
-    @ObservedObject var device: NumPad
+    @EnvironmentObject var device: NumPad
     @State var solution = ""
     
     var body: some View {
         VStack(spacing: 20) {
-            MathExampleView(device: NumPad(num: NumPadData()))
+            MathExampleView().environmentObject(self.device)
                 .padding()
             
             Spacer()
             
-            MathSolutionView(device: NumPad(num: NumPadData()), solution: $solution)
+            MathSolutionView(device: NumPad(), solution: $solution).environmentObject(self.device)
                 .padding()
             
             Spacer()
@@ -26,17 +26,25 @@ struct MathKeyboardView: View {
                                 switch self.device.numPad.arrayOfNum[row][item] {
                                 case "0" ... "9":
                                         if self.solution.count <= 2 {
+                                            self.device.numPad.sleep = false
                                             self.solution += self.device.numPad.arrayOfNum[row][item]
                                         }
                                 case "del":
                                     if self.solution.count > 0 {
+                                        self.device.numPad.sleep = false
                                         self.solution.removeLast()
                                     }
                                 case "sub":
                                     if Int(self.solution) == self.device.numPad.example {
-                                        print(true)
+                                        withAnimation {
+                                            self.device.numPad.sleep = false
+                                            self.solution = ""
+                                            self.device.numPad.multiplicand = Int.random(in: 1 ..< 10)
+                                            self.device.numPad.animalsEmotion = true
+                                        }
                                     } else {
-                                        print("\(self.device.numPad.factor) * \(self.device.numPad.multiplicand)")
+                                        self.solution = ""
+                                        self.device.numPad.animalsEmotion = false
                                     }
                                 default:
                                     print("Unknown case")
@@ -54,8 +62,10 @@ struct MathKeyboardView: View {
 }
 
 struct MathKeyboardView_Previews: PreviewProvider {
+    static let device = NumPad()
+    
     static var previews: some View {
-        MathKeyboardView(device: NumPad(num: NumPadData()))
+        MathKeyboardView().environmentObject(device)
     }
 }
 

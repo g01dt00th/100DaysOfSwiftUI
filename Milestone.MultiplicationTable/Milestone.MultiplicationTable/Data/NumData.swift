@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 
 enum NumPadEnum: CodingKey {
     case arrayOfNum, multiplicand, factor, example
@@ -12,16 +13,14 @@ struct NumPadData: Codable {
     ]
     
     var multiplicand = Int.random(in: 1 ..< 13)
-    var factor = Int.random(in: 1 ..< 13)
+    var factor = Int.random(in: 1 ..< 10)
     var example: Int {
         multiplicand * factor
     }
+    var animalsEmotion = false
+    var sleep = true
 }
 
 class NumPad: ObservableObject {
-    @Published var numPad: NumPadData
-    
-    init(num: NumPadData) {
-        self.numPad = num
-    }
+    @Published var numPad = NumPadData()
 }

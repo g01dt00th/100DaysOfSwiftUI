@@ -1,12 +1,22 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var device: NumPad
+    @EnvironmentObject var device: NumPad
     
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-                MathKeyboardView(device: NumPad(num: NumPadData()))
+                HStack {
+                    Image(device.numPad.sleep ? "zzz" : device.numPad.animalsEmotion ? "heart" : "heartBroken")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                        .offset(x: 13, y: 240)
+                    
+                    Image("zebra")
+                        .offset(y: 280)
+                }
+                
+                MathKeyboardView().environmentObject(self.device)
                     .padding()
             }
             .animation(.easeOut)
@@ -19,7 +29,9 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static let device = NumPad()
+    
     static var previews: some View {
-        ContentView(device: NumPad(num: NumPadData()))
+        ContentView().environmentObject(device)
     }
 }

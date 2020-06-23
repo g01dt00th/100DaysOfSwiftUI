@@ -20,6 +20,6 @@ struct MathSolutionView: View {
 
 struct MathSolutionView_Previews: PreviewProvider {
     static var previews: some View {
-        MathSolutionView(device: NumPad(num: NumPadData()), solution: .constant(""))
+        MathSolutionView(device: NumPad(), solution: .constant("+"))
     }
 }
