@@ -1,15 +1,14 @@
 import SwiftUI
 
 struct MathExampleView: View {
-    private let multiplicand = Int.random(in: 1 ... 12)
-    private let factor = "5"
+    @ObservedObject var device: NumPad
     
     var body: some View {
         HStack {
             ZStack {
                 RandomShapesView()
                 
-                Text(factor)
+                Text("\(device.numPad.factor)")
             }
             
             ZStack {
@@ -21,23 +20,23 @@ struct MathExampleView: View {
             }
             
             HStack {
-                if multiplicand >= 10 {
+                if device.numPad.multiplicand >= 10 {
                     ZStack {
                         RandomShapesView()
-                        
+
                         Text("1")
                     }
-                    
+
                     ZStack {
                         RandomShapesView()
-                        
-                        Text(multiplicand == 10 ? "0" : (multiplicand == 11 ? "1" : "2"))
+
+                        Text(device.numPad.multiplicand == 10 ? "0" : (device.numPad.multiplicand == 11 ? "1" : "2"))
                     }
                 } else {
                     ZStack {
                         RandomShapesView()
-                        
-                        Text("\(multiplicand)")
+
+                        Text("\(device.numPad.multiplicand)")
                     }
                 }
             }
@@ -47,6 +46,6 @@ struct MathExampleView: View {
 
 struct MathExampleView_Previews: PreviewProvider {
     static var previews: some View {
-        MathExampleView()
+        MathExampleView(device: NumPad(num: NumPadData()))
     }
 }

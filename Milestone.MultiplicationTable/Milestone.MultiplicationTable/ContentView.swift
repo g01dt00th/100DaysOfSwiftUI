@@ -6,12 +6,6 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-                Spacer()
-                
-                MathExampleView()
-                
-                Spacer()
-                
                 MathKeyboardView(device: NumPad(num: NumPadData()))
                     .padding()
             }

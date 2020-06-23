@@ -6,6 +6,11 @@ struct MathKeyboardView: View {
     
     var body: some View {
         VStack(spacing: 20) {
+            MathExampleView(device: NumPad(num: NumPadData()))
+                .padding()
+            
+            Spacer()
+            
             MathSolutionView(device: NumPad(num: NumPadData()), solution: $solution)
                 .padding()
             
@@ -18,13 +23,23 @@ struct MathKeyboardView: View {
                             RandomShapesView()
                             
                             Button(action: {
-                                if self.device.numPad.arrayOfNum[row][item] == "del" && self.solution.count > 0 {
-                                    self.solution.removeLast()
-                                } else if self.device.numPad.arrayOfNum[row][item] == "sub" {
-                                    print("sub")
-                                } else if (Int(self.device.numPad.arrayOfNum[row][item]) != nil) {
-                                    self.solution += self.device.numPad.arrayOfNum[row][item]
-                                    print(self.device.numPad.arrayOfNum[row][item])
+                                switch self.device.numPad.arrayOfNum[row][item] {
+                                case "0" ... "9":
+                                        if self.solution.count <= 2 {
+                                            self.solution += self.device.numPad.arrayOfNum[row][item]
+                                        }
+                                case "del":
+                                    if self.solution.count > 0 {
+                                        self.solution.removeLast()
+                                    }
+                                case "sub":
+                                    if Int(self.solution) == self.device.numPad.example {
+                                        print(true)
+                                    } else {
+                                        print("\(self.device.numPad.factor) * \(self.device.numPad.multiplicand)")
+                                    }
+                                default:
+                                    print("Unknown case")
                                 }
                             }) {
                                 Text(self.device.numPad.arrayOfNum[row][item])

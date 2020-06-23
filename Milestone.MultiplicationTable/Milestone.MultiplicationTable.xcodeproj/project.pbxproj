@@ -17,7 +17,7 @@
 		7A2ADF482496298200BE3AB8 /* MathExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2ADF472496298200BE3AB8 /* MathExampleView.swift */; };
 		7A2ADF4A24963B5E00BE3AB8 /* MathSolutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2ADF4924963B5E00BE3AB8 /* MathSolutionView.swift */; };
 		7A313FC02481AEAF00D7CA48 /* MathKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A313FBF2481AEAF00D7CA48 /* MathKeyboardView.swift */; };
-		7A313FC22481AEEE00D7CA48 /* FiguresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A313FC12481AEEE00D7CA48 /* FiguresView.swift */; };
+		7A313FC22481AEEE00D7CA48 /* RandomShapesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A313FC12481AEEE00D7CA48 /* RandomShapesView.swift */; };
 		7A313FCD2481B4A200D7CA48 /* NumData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A313FCC2481B4A200D7CA48 /* NumData.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +34,7 @@
 		7A2ADF472496298200BE3AB8 /* MathExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathExampleView.swift; sourceTree = "<group>"; };
 		7A2ADF4924963B5E00BE3AB8 /* MathSolutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathSolutionView.swift; sourceTree = "<group>"; };
 		7A313FBF2481AEAF00D7CA48 /* MathKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathKeyboardView.swift; sourceTree = "<group>"; };
-		7A313FC12481AEEE00D7CA48 /* FiguresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiguresView.swift; sourceTree = "<group>"; };
+		7A313FC12481AEEE00D7CA48 /* RandomShapesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomShapesView.swift; sourceTree = "<group>"; };
 		7A313FCC2481B4A200D7CA48 /* NumData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,7 +112,7 @@
 		7A313FC32481AF7F00D7CA48 /* Shapes */ = {
 			isa = PBXGroup;
 			children = (
-				7A313FC12481AEEE00D7CA48 /* FiguresView.swift */,
+				7A313FC12481AEEE00D7CA48 /* RandomShapesView.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -196,7 +196,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A313FC22481AEEE00D7CA48 /* FiguresView.swift in Sources */,
+				7A313FC22481AEEE00D7CA48 /* RandomShapesView.swift in Sources */,
 				7A1BC9F42469CAD4004E157A /* AppDelegate.swift in Sources */,
 				7A313FCD2481B4A200D7CA48 /* NumData.swift in Sources */,
 				7A2ADF4A24963B5E00BE3AB8 /* MathSolutionView.swift in Sources */,

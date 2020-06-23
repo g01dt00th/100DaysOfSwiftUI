@@ -1,7 +1,7 @@
 import Foundation
 
 enum NumPadEnum: CodingKey {
-    case arrayOfNum
+    case arrayOfNum, multiplicand, factor, example
 }
 
 struct NumPadData: Codable {
@@ -10,6 +10,12 @@ struct NumPadData: Codable {
         ["5", "6", "7", "8"],
         ["del", "9", "0", "sub"]
     ]
+    
+    var multiplicand = Int.random(in: 1 ..< 13)
+    var factor = Int.random(in: 1 ..< 13)
+    var example: Int {
+        multiplicand * factor
+    }
 }
 
 class NumPad: ObservableObject {

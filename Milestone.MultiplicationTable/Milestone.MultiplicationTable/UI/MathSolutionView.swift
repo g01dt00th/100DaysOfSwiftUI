@@ -6,7 +6,7 @@ struct MathSolutionView: View {
     
     var body: some View {
         HStack {
-            ForEach(0 ..< solution.count, id: \.self) { item in
+            ForEach(0 ..< self.solution.count, id: \.self) { item in
                 ZStack {
                     RandomShapesView()
                     
