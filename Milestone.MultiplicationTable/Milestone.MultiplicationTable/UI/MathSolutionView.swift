@@ -1,16 +1,15 @@
 import SwiftUI
 
 struct MathSolutionView: View {
-    @ObservedObject var device: NumPad
-    @Binding var solution: String
+    @EnvironmentObject var device: NumPad
     
     var body: some View {
         HStack {
-            ForEach(0 ..< self.solution.count, id: \.self) { item in
+            ForEach(0 ..< self.device.numPad.solution.count, id: \.self) { item in
                 ZStack {
                     RandomShapesView()
                     
-                    Text(String(Array(self.solution)[item]))
+                    Text(String(Array(self.device.numPad.solution)[item]))
                 }
             }
         }
@@ -19,7 +18,9 @@ struct MathSolutionView: View {
 }
 
 struct MathSolutionView_Previews: PreviewProvider {
+    static let device = NumPad()
+    
     static var previews: some View {
-        MathSolutionView(device: NumPad(), solution: .constant("+"))
+        MathSolutionView().environmentObject(device)
     }
 }

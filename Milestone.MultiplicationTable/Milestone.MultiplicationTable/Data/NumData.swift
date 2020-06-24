@@ -6,7 +6,7 @@ enum NumPadEnum: CodingKey {
 }
 
 struct NumPadData: Codable {
-    var arrayOfNum = [
+    let arrayOfNum = [
         ["1", "2", "3", "4"],
         ["5", "6", "7", "8"],
         ["del", "9", "0", "sub"]
@@ -19,6 +19,10 @@ struct NumPadData: Codable {
     }
     var animalsEmotion = false
     var sleep = true
+    
+    let shape = Bool.random()
+    
+    var solution = ""
 }
 
 class NumPad: ObservableObject {

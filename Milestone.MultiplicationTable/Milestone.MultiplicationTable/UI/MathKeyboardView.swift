@@ -2,54 +2,44 @@ import SwiftUI
 
 struct MathKeyboardView: View {
     @EnvironmentObject var device: NumPad
-    @State var solution = ""
+    @State private var shape = UserDefaults.standard.bool(forKey: "1")
     
     var body: some View {
         VStack(spacing: 20) {
-            MathExampleView().environmentObject(self.device)
-                .padding()
-            
-            Spacer()
-            
-            MathSolutionView(device: NumPad(), solution: $solution).environmentObject(self.device)
-                .padding()
-            
-            Spacer()
-            
             ForEach(0 ..< 3) { row in
                 HStack(spacing: 20) {
                     ForEach(0 ..< 4) { item in
-                        ZStack {
-                            RandomShapesView()
-                            
-                            Button(action: {
-                                switch self.device.numPad.arrayOfNum[row][item] {
-                                case "0" ... "9":
-                                        if self.solution.count <= 2 {
-                                            self.device.numPad.sleep = false
-                                            self.solution += self.device.numPad.arrayOfNum[row][item]
-                                        }
-                                case "del":
-                                    if self.solution.count > 0 {
-                                        self.device.numPad.sleep = false
-                                        self.solution.removeLast()
-                                    }
-                                case "sub":
-                                    if Int(self.solution) == self.device.numPad.example {
-                                        withAnimation {
-                                            self.device.numPad.sleep = false
-                                            self.solution = ""
-                                            self.device.numPad.multiplicand = Int.random(in: 1 ..< 10)
-                                            self.device.numPad.animalsEmotion = true
-                                        }
-                                    } else {
-                                        self.solution = ""
-                                        self.device.numPad.animalsEmotion = false
-                                    }
-                                default:
-                                    print("Unknown case")
+                        Button(action: {
+                            switch self.device.numPad.arrayOfNum[row][item] {
+                            case "0" ... "9":
+                                if self.device.numPad.solution.count <= 2 {
+                                    self.device.numPad.sleep = false
+                                    self.device.numPad.solution += self.device.numPad.arrayOfNum[row][item]
                                 }
-                            }) {
+                            case "del":
+                                if self.device.numPad.solution.count > 0 {
+                                    self.device.numPad.sleep = false
+                                    self.device.numPad.solution.removeLast()
+                                }
+                            case "sub":
+                                if Int(self.device.numPad.solution) == self.device.numPad.example {
+                                    withAnimation {
+                                        self.device.numPad.sleep = false
+                                        self.device.numPad.solution = ""
+                                        self.device.numPad.multiplicand = Int.random(in: 1 ..< 10)
+                                        self.device.numPad.animalsEmotion = true
+                                    }
+                                } else {
+                                    self.device.numPad.solution = ""
+                                    self.device.numPad.animalsEmotion = false
+                                }
+                            default:
+                                print("Unknown case")
+                            }
+                        }) {
+                            ZStack {
+                                RandomShapesView()
+                                
                                 Text(self.device.numPad.arrayOfNum[row][item])
                             }
                         }
