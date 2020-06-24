@@ -38,8 +38,8 @@ struct MathKeyboardView: View {
                             }
                         }) {
                             ZStack {
-                                RandomShapesView()
-                                
+//                                RandomShapesView()
+                                MyShapeView(data: self.device.numPad.arrayOfShapes[row][item])
                                 Text(self.device.numPad.arrayOfNum[row][item])
                             }
                         }
